@@ -1,7 +1,7 @@
 using UnityEngine;
-using FineGameDesign.Utils;
+using Finegamedesign.Utils;
 
-namespace FineGameDesign.SmallWorld
+namespace Finegamedesign.SmallWorld
 {
 	public sealed class PhotonBody : MonoBehaviour
 	{
@@ -82,6 +82,14 @@ namespace FineGameDesign.SmallWorld
 				scale.y += gain;
 				transform.localScale = scale;
 				Object.Destroy(otherObject);
+			}
+		}
+
+		void OnDestroy()
+		{
+			if (!photon.isMine)
+			{
+				return;
 			}
 		}
 	}

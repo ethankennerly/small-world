@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace FineGameDesign.Utils
+namespace Finegamedesign.Utils
 {
 	public sealed class TestGeometry2D
 	{

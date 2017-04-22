@@ -1,31 +1,38 @@
 using UnityEngine;
 
-namespace FineGameDesign.Utils
+namespace Finegamedesign.Utils
 {
 	public sealed class OnJoinedSpawn : MonoBehaviour
 	{
+		public GameObject lobbyAnimator;
 		public GameObject prefab;
 		public GameObject[] spawnPoints;
-
-		public void OnJoinedRoom()
-		{
-		}
+		private GameObject player;
 
 		void Update()
 		{
-			if (Input.GetKeyDown(KeyCode.Return))
+			if (PhotonNetwork.inRoom)
 			{
-				if (PhotonNetwork.inRoom)
+				if (player == null)
 				{
-					SpawnWhereEmpty();
+					AnimationView.SetState(lobbyAnimator, "introBegin");
+					if (Input.GetKeyDown(KeyCode.Return))
+					{
+						AnimationView.SetState(lobbyAnimator, "introEnd");
+						SpawnWhereEmpty();
+					}
 				}
+			}
+			else
+			{
+				AnimationView.SetState(lobbyAnimator, "connectBegin");
 			}
 		}
 
 		private void SpawnWhereEmpty()
 		{
 			GameObject spawnTarget = WhereEmpty();
-			PhotonNetwork.Instantiate(prefab.name, spawnTarget.transform.position, Quaternion.identity, 0);
+			player = PhotonNetwork.Instantiate(prefab.name, spawnTarget.transform.position, Quaternion.identity, 0);
 		}
 
 		private GameObject WhereEmpty()

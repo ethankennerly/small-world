@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace FineGameDesign.Utils
+namespace Finegamedesign.Utils
 {
 	public sealed class CountTrigger : MonoBehaviour
 	{

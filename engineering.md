@@ -51,3 +51,9 @@ Shuffle spawn points.
 
 If no player is in the spawn's trigger area, spawn there.
 
+
+- [ ] 20 cells.  When any cell is eaten, another tiny cell appears.
+
+Master client manages spawning.
+Reuse spawn points and code to detect available spot.
+Jitter position.

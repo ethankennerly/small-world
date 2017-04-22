@@ -8,9 +8,14 @@ namespace Finegamedesign.Utils
 		public GameObject prefab;
 		public GameObject[] spawnPoints;
 		private GameObject player;
+		private SpawnController spawn = new SpawnController();
 
 		void Update()
 		{
+			if (PhotonNetwork.isMasterClient)
+			{
+				spawn.Update();
+			}
 			if (PhotonNetwork.inRoom)
 			{
 				if (player == null)
@@ -19,7 +24,7 @@ namespace Finegamedesign.Utils
 					if (Input.GetKeyDown(KeyCode.Return))
 					{
 						AnimationView.SetState(lobbyAnimator, "introEnd");
-						SpawnWhereEmpty();
+						player = spawn.SpawnWhereEmpty(prefab.name, spawnPoints);
 					}
 				}
 			}
@@ -27,40 +32,6 @@ namespace Finegamedesign.Utils
 			{
 				AnimationView.SetState(lobbyAnimator, "connectBegin");
 			}
-		}
-
-		private void SpawnWhereEmpty()
-		{
-			GameObject spawnTarget = WhereEmpty();
-			player = PhotonNetwork.Instantiate(prefab.name, spawnTarget.transform.position, Quaternion.identity, 0);
-		}
-
-		private GameObject WhereEmpty()
-		{
-			GameObject spawnTarget = null;
-			if (null == prefab || null == spawnPoints)
-			{
-				Debug.Log("OnJoinedRoom: No prefab or no spawn points.");
-				return spawnTarget;
-			}
-			for (int attempt = 0; attempt < spawnPoints.Length; attempt++)
-			{
-				for (int index = 0; index < spawnPoints.Length; index++)
-				{
-					GameObject spawn = spawnPoints[index];
-					CountTrigger trigger = spawn.GetComponent<CountTrigger>();
-					if (null != trigger && trigger.count <= attempt)
-					{
-						spawnTarget = spawn;
-						return spawnTarget;
-					}
-				}
-			}
-			if (null == spawnTarget)
-			{
-				spawnTarget = spawnPoints[0];
-			}
-			return spawnTarget;
 		}
 	}
 }

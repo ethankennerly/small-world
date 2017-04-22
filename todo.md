@@ -16,6 +16,7 @@ TODO
 - [x] Read:  Press Enter to spawn.  Press arrow keys to move.
 - [ ] 20 cells.  When a cell is eaten, another one appears.
 - [ ] Spawn in available color.
+- [ ] Shuffle spawn points.
 - [ ] Camera follow.
 - [ ] Bot cells eat smaller, avoid bigger.
 - [ ] Sounds.

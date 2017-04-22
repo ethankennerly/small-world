@@ -20,12 +20,20 @@ namespace Finegamedesign.Utils
 			UpdateMaintainedObjects();
 		}
 
-		public GameObject SpawnWhereEmpty(string resourceName, GameObject[] spawnPoints)
+		public GameObject SpawnWhereEmpty(string resourceName, GameObject[] spawnPoints, GameObject spawnedObject = null)
 		{
 			GameObject spawnTarget = WhereEmpty(spawnPoints);
-			GameObject spawnedObject = PhotonNetwork.Instantiate(
-				resourceName, spawnTarget.transform.position,
-				Quaternion.identity, 0);
+			if (null == spawnedObject)
+			{
+				spawnedObject = PhotonNetwork.Instantiate(
+					resourceName, spawnTarget.transform.position,
+					Quaternion.identity, 0);
+			}
+			else
+			{
+				spawnedObject.transform.position = spawnTarget.transform.position;
+				spawnedObject.SetActive(true);
+			}
 			return spawnedObject;
 		}
 
@@ -65,11 +73,11 @@ namespace Finegamedesign.Utils
 			for (int index = 0; index < maintainedObjects.Length; index++)
 			{
 				GameObject maintainedObject = maintainedObjects[index];
-				if (null != maintainedObject)
+				if (null != maintainedObject && maintainedObject.activeSelf)
 				{
 					continue;
 				}
-				maintainedObject = SpawnWhereEmpty(maintainedResource.name, spawnPoints);
+				maintainedObject = SpawnWhereEmpty(maintainedResource.name, spawnPoints, maintainedObject);
 				maintainedObjects[index] = maintainedObject;
 			}
 		}

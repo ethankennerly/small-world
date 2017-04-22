@@ -81,15 +81,7 @@ namespace Finegamedesign.SmallWorld
 				scale.x += gain;
 				scale.y += gain;
 				transform.localScale = scale;
-				Object.Destroy(otherObject);
-			}
-		}
-
-		void OnDestroy()
-		{
-			if (!photon.isMine)
-			{
-				return;
+				otherObject.SetActive(false);
 			}
 		}
 	}

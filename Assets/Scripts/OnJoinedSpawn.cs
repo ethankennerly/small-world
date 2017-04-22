@@ -21,13 +21,13 @@ namespace Finegamedesign.Utils
 		{
 			if (PhotonNetwork.inRoom)
 			{
-				if (player == null)
+				if (player == null || !player.activeSelf)
 				{
 					AnimationView.SetState(lobbyAnimator, "introBegin");
 					if (Input.GetKeyDown(KeyCode.Return))
 					{
 						AnimationView.SetState(lobbyAnimator, "introEnd");
-						player = spawn.SpawnWhereEmpty(prefab.name, spawnPoints);
+						player = spawn.SpawnWhereEmpty(prefab.name, spawnPoints, player);
 					}
 				}
 			}

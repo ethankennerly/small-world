@@ -14,14 +14,14 @@ TODO
 - [x] Big circle eats small circle.
 - [x] Spawn in available position.
 - [x] Read:  Press Enter to spawn.  Press arrow keys to move.
-- [ ] 20 cells.  When a cell is eaten, another one appears.
-- [ ] Spawn in available color.
-- [ ] Shuffle spawn points.
+- [x] Read name.
+- [x] 20 cells.  When a cell is eaten, another one appears.
+- [ ] Instead of destroy, deactivate eaten object.
 - [ ] Camera follow.
+- [ ] Spawn in available color.
+- [ ] Shuffle spawn points and jitter position in a halo.
 - [ ] Bot cells eat smaller, avoid bigger.
 - [ ] Sounds.
-- [ ] Tap anywhere to spawn.
-- [ ] Read name.
 - [ ] Upload to Ludum Dare.
 - [ ] Critical mass end condition.
 - [ ] End after 2 minutes.  Restart clock.
@@ -36,6 +36,7 @@ TODO
 - [ ] Trails of dots to train maneuvering.
 - [ ] Some smaller cells fleeing with fearful emoji facing their direction.
 - [ ] Cells are same color.
+- [ ] Wrap world.
 - [ ] Cells are green or blue or pink if smaller.
 - [ ] Cells are red or orange if bigger.
 - [ ] Boundaries of movable space are marked.

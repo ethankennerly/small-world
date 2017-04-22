@@ -5,11 +5,11 @@ namespace FineGameDesign.SmallWorld
 	public sealed class PhotonBody : MonoBehaviour
 	{
 	 	PhotonView photon;
-	 	RigidBody2D body;
+	 	Rigidbody2D body;
 
 		void Awake()
 		{
-			body = GetComponent<RigidBody2D>();
+			body = GetComponent<Rigidbody2D>();
 			photon = GetComponent<PhotonView>();
 		}
 

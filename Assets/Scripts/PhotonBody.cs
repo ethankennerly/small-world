@@ -6,6 +6,8 @@ namespace FineGameDesign.SmallWorld
 	public sealed class PhotonBody : MonoBehaviour
 	{
 		public static float eatRadiusThreshold = 1.125f;
+		public static float ignoreEatLayer = 2;
+
 	 	PhotonView photon;
 	 	Rigidbody2D body;
 
@@ -55,10 +57,12 @@ namespace FineGameDesign.SmallWorld
 			}
 		}
 
-		void OnCollision2DEnter(Collider2D other)
+		void OnCollisionEnter2D(Collision2D other)
 		{
 			GameObject otherObject = other.gameObject;
-			if (Physics.IgnoreRaycastLayer == otherObject.layer)
+			Debug.Log("OnCollisionEnter2D: layer " + otherObject.layer
+				+ " ignore " + ignoreEatLayer);
+			if (ignoreEatLayer == otherObject.layer)
 			{
 				return;
 			}
@@ -75,7 +79,7 @@ namespace FineGameDesign.SmallWorld
 			{
 				float gain = Geometry2D.RadiusDifference(radius, otherRadius);
 				scale.x += gain;
-				scale.y = gain;
+				scale.y += gain;
 				transform.localScale = scale;
 				Object.Destroy(otherObject);
 			}

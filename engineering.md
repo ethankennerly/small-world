@@ -25,7 +25,16 @@
 - Join match.
 - See balls.
 - Press arrow key.  See balls move.
+- Close host.  Guests disappear also.
 <https://docs.unity3d.com/Manual/UnityMultiplayerSettingUp.html>
+
+Other multiplayer options.
+<https://www.slideshare.net/NoamGat/building-multiplayer-games-w-unity>
+
+Photon Unity
+<https://doc.photonengine.com/en-us/pun/current/getting-started/pun-intro>
+Demos
+<https://doc.photonengine.com/en-us/pun/current/manuals-and-demos/demo-downloads-unity>
 
 <https://docs.unity3d.com/Manual/UNetConverting.html>
 

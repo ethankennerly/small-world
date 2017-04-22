@@ -3,8 +3,9 @@ TODO
 - [x] Observe Jennifer play Agar.io.
 - [x] Play SpatialOS Hello World
 - [x] Edit SpatialOS Hello World
-- [x] Failed to load SpatialOS Hello World on second computer.
-- [ ] Unity Multiplayer:  See circle move on second computer.
+- [x] SpatialOS Demo: Failed to load Hello World on second computer.
+- [x] Unity Multiplayer Demo:  See ball move on second computer.
+- [x] Photon Unity Demo:  See characters remain when host logs out.
 - [ ] Circles.
 - [ ] Tap to move.
 - [ ] Big circle eats small circle.

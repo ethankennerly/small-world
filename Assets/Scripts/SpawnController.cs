@@ -41,10 +41,12 @@ namespace Finegamedesign.Utils
 			{
 				for (int index = 0; index < spawnPoints.Length; index++)
 				{
-					GameObject spawn = spawnPoints[index];
+					int pointIndex = (spawnIndex + index) % spawnPoints.Length;
+					GameObject spawn = spawnPoints[pointIndex];
 					CountTrigger trigger = spawn.GetComponent<CountTrigger>();
 					if (null != trigger && trigger.count <= attempt)
 					{
+						spawnIndex = (pointIndex + 1) % spawnPoints.Length;
 						spawnTarget = spawn;
 						return spawnTarget;
 					}

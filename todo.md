@@ -8,12 +8,15 @@ TODO
 - [x] Photon Unity Demo:  See characters remain when host logs out.
 - [x] Photon Unity Demo:  2D demo.  Remove other demos.
 - [x] Remove platforms.  Add walls.
-- [ ] Circles.
-- [ ] Tap to move.
-- [ ] Camera follow.
+- [x] Circles.
+- [ ] Keyboard to move.
 - [ ] Big circle eats small circle.
+- [ ] Spawn in available position.
+- [ ] Spawn in available color.
 - [ ] Sounds.
 - [ ] Upload to Ludum Dare.
+- [ ] Tap to move.
+- [ ] Camera follow.
 - [ ] Tap to project in that direction, animating exhaust in opposite direction, with momentum.
 - [ ] Start with a trail of dots and a finger tapping at the dot.
 - [ ] Trails of dots to train maneuvering.

@@ -33,7 +33,15 @@ namespace FineGameDesign.SmallWorld
 			{
 				velocity.x = 1.0f;
 			}
-			body.velocity = velocity;
+			if (Input.GetAxisRaw("Vertical") < -0.5f)
+			{
+				velocity.y = -1.0f;
+			}
+			else if (0.5f < Input.GetAxisRaw("Vertical"))
+			{
+				velocity.y = 1.0f;
+			}
+			body.velocity = velocity.normalized;
 		}
 	}
 }

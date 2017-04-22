@@ -1,0 +1,23 @@
+TODO
+- [x] Brainstorm 20 reference games.
+- [x] Observe Jennifer play Agar.io.
+- [ ] Multiplayer with SpatialOS?
+- [ ] Circles.
+- [ ] Tap to move.
+- [ ] Big circle eats small circle.
+- [ ] Sounds.
+- [ ] Upload to Ludum Dare.
+- [ ] Tap to project in that direction, animating exhaust in opposite direction, with momentum.
+- [ ] Start with a trail of dots and a finger tapping at the dot.
+- [ ] Trails of dots to train maneuvering.
+- [ ] Some smaller cells fleeing with fearful emoji facing their direction.
+- [ ] Cells are same color.
+- [ ] Cells are green or blue or pink if smaller.
+- [ ] Cells are red or orange if bigger.
+- [ ] Boundaries of movable space are marked.
+- [ ] Angry emoji face on bigger cell that is approaching.
+- [ ] Match with less skilled players or bots.
+- [ ] Number on Jennifer indicating leaderboard rank.
+- [ ] Mark leaderboard number on the cell, such as with a crown on the cell.
+- [ ] Cells that change color of your own cell.
+- [ ] Cells that decorate your cell with a pattern.

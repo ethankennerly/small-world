@@ -7,6 +7,7 @@ TODO
 - [x] Unity Multiplayer Demo:  See ball move on second computer.
 - [x] Photon Unity Demo:  See characters remain when host logs out.
 - [x] Photon Unity Demo:  2D demo.  Remove other demos.
+- [x] Remove platforms.  Add walls.
 - [ ] Circles.
 - [ ] Tap to move.
 - [ ] Camera follow.

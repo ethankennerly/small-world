@@ -6,6 +6,7 @@ namespace FineGameDesign.SmallWorld
 	public sealed class PhotonBody : MonoBehaviour
 	{
 		public static float eatRadiusThreshold = 1.125f;
+		public static int playerLayer = 8;
 
 	 	PhotonView photon;
 	 	Rigidbody2D body;

@@ -15,20 +15,20 @@ TODO
 - [ ] Spawn in available position.
 - [ ] Spawn in available color.
 - [ ] Camera follow.
+- [ ] 20 cells.  When a cell is eaten, another one appears.
+- [ ] Bot cells eat smaller, avoid bigger.
+- [ ] Sounds.
+- [ ] Tap anywhere to spawn.
+- [ ] Read name.
+- [ ] Upload to Ludum Dare.
 - [ ] Critical mass end condition.
 - [ ] End after 2 minutes.  Restart clock.
 - [ ] Show size rank.
 - [ ] When join, become one of the cells at medium size.
-- [ ] 20 cells.  When a cell is eaten, another one appears.
 - [ ] Two teams:  red versus blue.
 - [ ] Meter of relative size.
 - [ ] When connect, possess cell on team with smallest players.
 - [ ] Press ENTER or tap to respawn.
-- [ ] Bot cells eat smaller, avoid bigger.
-- [ ] Sounds.
-- [ ] Tap anywhere to spawn.
-- [ ] Upload to Ludum Dare.
-- [ ] Read name.
 - [ ] Tap to move.
 - [ ] Tap to project in that direction, animating exhaust in opposite direction, with momentum.
 - [ ] Start with a trail of dots and a finger tapping at the dot.

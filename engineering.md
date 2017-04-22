@@ -42,3 +42,12 @@ Demos
 
 Tank video with lobby
 <https://www.youtube.com/watch?v=V6wEvT6G92M>
+
+## Spawn
+
+Away from other players.
+
+Shuffle spawn points.
+
+If no player is in the spawn's trigger area, spawn there.
+

@@ -8,14 +8,17 @@ namespace Finegamedesign.Utils
 		public GameObject prefab;
 		public GameObject[] spawnPoints;
 		private GameObject player;
-		private SpawnController spawn = new SpawnController();
+		[SerializeField]
+		public SpawnController spawn = new SpawnController();
+
+		void Start()
+		{
+			spawn.spawnPoints = spawnPoints;
+			spawn.Setup();
+		}
 
 		void Update()
 		{
-			if (PhotonNetwork.isMasterClient)
-			{
-				spawn.Update();
-			}
 			if (PhotonNetwork.inRoom)
 			{
 				if (player == null)
@@ -31,6 +34,10 @@ namespace Finegamedesign.Utils
 			else
 			{
 				AnimationView.SetState(lobbyAnimator, "connectBegin");
+			}
+			if (PhotonNetwork.isMasterClient)
+			{
+				spawn.Update();
 			}
 		}
 	}

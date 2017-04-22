@@ -2,10 +2,22 @@ using UnityEngine;
 
 namespace Finegamedesign.Utils
 {
+	[System.Serializable]
 	public sealed class SpawnController
 	{
+		public GameObject maintainedResource;
+		public GameObject[] maintainedObjects;
+		public GameObject[] spawnPoints;
+		private int spawnIndex = 0;
+
+		public void Setup()
+		{
+			maintainedObjects = new GameObject[spawnPoints.Length];
+		}
+
 		public void Update()
 		{
+			UpdateMaintainedObjects();
 		}
 
 		public GameObject SpawnWhereEmpty(string resourceName, GameObject[] spawnPoints)
@@ -40,9 +52,24 @@ namespace Finegamedesign.Utils
 			}
 			if (null == spawnTarget)
 			{
-				spawnTarget = spawnPoints[0];
+				spawnTarget = spawnPoints[spawnIndex];
+				spawnIndex = (spawnIndex + 1) % spawnPoints.Length;
 			}
 			return spawnTarget;
+		}
+
+		private void UpdateMaintainedObjects()
+		{
+			for (int index = 0; index < maintainedObjects.Length; index++)
+			{
+				GameObject maintainedObject = maintainedObjects[index];
+				if (null != maintainedObject)
+				{
+					continue;
+				}
+				maintainedObject = SpawnWhereEmpty(maintainedResource.name, spawnPoints);
+				maintainedObjects[index] = maintainedObject;
+			}
 		}
 	}
 }

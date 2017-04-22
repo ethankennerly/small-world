@@ -10,15 +10,26 @@ TODO
 - [x] Remove platforms.  Add walls.
 - [x] Circles.
 - [x] Keyboard to move.
-- [ ] Spawn small circles.
-- [ ] Big circle eats small circle.
+- [x] Spawn small circles.
+- [x] Big circle eats small circle.
 - [ ] Spawn in available position.
 - [ ] Spawn in available color.
+- [ ] Camera follow.
+- [ ] Critical mass end condition.
+- [ ] End after 2 minutes.  Restart clock.
+- [ ] Show size rank.
+- [ ] When join, become one of the cells at medium size.
+- [ ] 20 cells.  When a cell is eaten, another one appears.
+- [ ] Two teams:  red versus blue.
+- [ ] Meter of relative size.
+- [ ] When connect, possess cell on team with smallest players.
+- [ ] Press ENTER or tap to respawn.
 - [ ] Bot cells eat smaller, avoid bigger.
 - [ ] Sounds.
+- [ ] Tap anywhere to spawn.
 - [ ] Upload to Ludum Dare.
+- [ ] Read name.
 - [ ] Tap to move.
-- [ ] Camera follow.
 - [ ] Tap to project in that direction, animating exhaust in opposite direction, with momentum.
 - [ ] Start with a trail of dots and a finger tapping at the dot.
 - [ ] Trails of dots to train maneuvering.

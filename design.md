@@ -8,6 +8,7 @@ Which game would Jennifer play?
 
 - Agar.io
   - Slither.io
+  - <http://www.funnygames.us/game/eating_or_being_eaten.html>
 - TripleTown
 - Contagion
 - Osmosis
@@ -26,6 +27,36 @@ Which game would Jennifer play?
 - Super Mario Bros
 - Small World (board game)
 - Small World 2 tutorial
+
+# Name ideas
+
+- Big Cell
+- Top Cell
+- Big Bubble
+- Bubble Boss
+- King Cell
+- Cell King
+- Cell Boss
+- Boss Cell
+- Eat
+- Cell Assimilator
+- Cell Eater
+- Eat or Die
+- Gas Giant
+- Sponge
+- Bubble Trouble
+- Bubble Eater
+- Hungry Bubble
+- Micro War
+
+## Unavailable names
+
+- Cell War
+- Nano War
+- Eat or Be Eaten
+- Hungry Cell
+- Big Fish
+- Pixel War
 
 # Playtest Journal
 

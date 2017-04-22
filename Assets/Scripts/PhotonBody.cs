@@ -20,6 +20,7 @@ namespace FineGameDesign.SmallWorld
 				return;
 			}
 			UpdateMovement();
+			UpdateQuit();
 		}
 
 		void UpdateMovement()
@@ -42,6 +43,14 @@ namespace FineGameDesign.SmallWorld
 				velocity.y = 1.0f;
 			}
 			body.velocity = velocity.normalized;
+		}
+
+		void UpdateQuit()
+		{
+			if (Input.GetKeyDown(KeyCode.Escape))
+			{
+				Application.Quit();
+			}
 		}
 	}
 }

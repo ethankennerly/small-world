@@ -9,10 +9,12 @@ TODO
 - [x] Photon Unity Demo:  2D demo.  Remove other demos.
 - [x] Remove platforms.  Add walls.
 - [x] Circles.
-- [ ] Keyboard to move.
+- [x] Keyboard to move.
+- [ ] Spawn small circles.
 - [ ] Big circle eats small circle.
 - [ ] Spawn in available position.
 - [ ] Spawn in available color.
+- [ ] Bot cells eat smaller, avoid bigger.
 - [ ] Sounds.
 - [ ] Upload to Ludum Dare.
 - [ ] Tap to move.

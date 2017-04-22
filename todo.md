@@ -2,7 +2,9 @@ TODO
 - [x] Brainstorm 20 reference games.
 - [x] Observe Jennifer play Agar.io.
 - [x] Play SpatialOS Hello World
-- [ ] Edit SpatialOS Hello World
+- [x] Edit SpatialOS Hello World
+- [x] Failed to load SpatialOS Hello World on second computer.
+- [ ] Unity Multiplayer:  See circle move on second computer.
 - [ ] Circles.
 - [ ] Tap to move.
 - [ ] Big circle eats small circle.

@@ -9,11 +9,26 @@ namespace FineGameDesign.Utils
 
 		public void OnJoinedRoom()
 		{
-			GameObject spawnTarget = SpawnWhereEmpty();
+		}
+
+		void Update()
+		{
+			if (Input.GetKeyDown(KeyCode.Return))
+			{
+				if (PhotonNetwork.inRoom)
+				{
+					SpawnWhereEmpty();
+				}
+			}
+		}
+
+		private void SpawnWhereEmpty()
+		{
+			GameObject spawnTarget = WhereEmpty();
 			PhotonNetwork.Instantiate(prefab.name, spawnTarget.transform.position, Quaternion.identity, 0);
 		}
 
-		private GameObject SpawnWhereEmpty()
+		private GameObject WhereEmpty()
 		{
 			GameObject spawnTarget = null;
 			if (null == prefab || null == spawnPoints)

@@ -12,10 +12,10 @@ TODO
 - [x] Keyboard to move.
 - [x] Spawn small circles.
 - [x] Big circle eats small circle.
-- [ ] Spawn in available position.
+- [x] Spawn in available position.
+- [ ] 20 cells.  When a cell is eaten, another one appears.
 - [ ] Spawn in available color.
 - [ ] Camera follow.
-- [ ] 20 cells.  When a cell is eaten, another one appears.
 - [ ] Bot cells eat smaller, avoid bigger.
 - [ ] Sounds.
 - [ ] Tap anywhere to spawn.

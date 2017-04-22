@@ -6,9 +6,10 @@ TODO
 - [x] SpatialOS Demo: Failed to load Hello World on second computer.
 - [x] Unity Multiplayer Demo:  See ball move on second computer.
 - [x] Photon Unity Demo:  See characters remain when host logs out.
-- [x] Photon Unity Demo:  Auto-start 2D demo.  Remove other demos.
+- [x] Photon Unity Demo:  2D demo.  Remove other demos.
 - [ ] Circles.
 - [ ] Tap to move.
+- [ ] Camera follow.
 - [ ] Big circle eats small circle.
 - [ ] Sounds.
 - [ ] Upload to Ludum Dare.

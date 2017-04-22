@@ -1,7 +1,8 @@
 TODO
 - [x] Brainstorm 20 reference games.
 - [x] Observe Jennifer play Agar.io.
-- [ ] Multiplayer with SpatialOS?
+- [x] Play SpatialOS Hello World
+- [ ] Edit SpatialOS Hello World
 - [ ] Circles.
 - [ ] Tap to move.
 - [ ] Big circle eats small circle.

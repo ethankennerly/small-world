@@ -110,7 +110,7 @@ namespace Finegamedesign.SmallWorld
 			}
 		}
 
-		private void UpdateRandomDirection()
+		private void UpdateWander()
 		{
 			if (null == fleeFrom && null == chaseTo)
 			{

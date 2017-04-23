@@ -26,12 +26,14 @@ TODO
 - [x] Bot cells eat smaller, avoid bigger.
 - [x] Bot cells move at equal speed of player.
 - [x] Bot respawns.
-- [ ] Do not spawn tiny cell inside a player.
-- [ ] Spawn bot or player farther away from other players.
-- [ ] Bot critical mass end condition destroy bot.
-- [ ] Spawn tiny cell near oldest tiny cell.
+- [x] Bot critical mass end condition destroy bot.
+- [ ] When game is over, bots don't auto restart game.
+- [ ] When game is over, animate.
 - [ ] Observe Jennifer play.
 - [ ] Upload to Ludum Dare.
+- [ ] Do not spawn tiny cell inside a player.
+- [ ] Spawn bot or player farther away from other players.
+- [ ] Spawn tiny cell near oldest tiny cell.
 - [ ] Sounds.
 - [ ] Read name on cell.
 - [ ] Spawn in available color.

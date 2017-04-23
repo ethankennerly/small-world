@@ -17,23 +17,44 @@ namespace Finegamedesign.SmallWorld
 		public GameObject player;
 		public bool isGameBeginOnce = false;
 		public bool isGameEnd = false;
+		public int playerActiveCount = 0;
 
 		public void Update()
 		{
-			UpdateRank();
 			UpdateGameEnd();
+			if (!isGameEnd)
+			{
+				UpdateRank();
+			}
 		}
 
 		private void UpdateGameEnd()
 		{
+			int index;
+			GameObject aPlayer;
+			playerActiveCount = 0;
+			for (index = 0; index < players.Count; index++)
+			{
+				aPlayer = players[index];
+				if (aPlayer.activeSelf)
+				{
+					playerActiveCount++;
+				}
+			}
+			if (isGameEnd && 1 <= playerActiveCount)
+			{
+				isGameEnd = false;
+			}
 			isGameEnd = IsBiggest(winScale);
 			if(!isGameEnd)
 			{
 				return;
 			}
-			for (int index = 0; index < players.Count; index++)
+			for (index = 0; index < players.Count; index++)
 			{
-				players[index].SetActive(false);
+				aPlayer = players[index];
+				aPlayer.SetActive(false);
+				StartScale(aPlayer);
 			}
 		}
 
@@ -52,7 +73,7 @@ namespace Finegamedesign.SmallWorld
 			{
 				return false;
 			}
-			if (null == players[0] || !players[0].activeSelf)
+			if (null == players[0])
 			{
 				return false;
 			}

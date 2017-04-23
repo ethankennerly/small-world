@@ -106,4 +106,5 @@ Top opportunities to motivate Jennifer to play 1 minute:
 
 - Downloaded to her computer.
 - Another cell.
+- Scale up.  Instruction screen appears again.  Got confused.
 - Read "play" instead of "spawn".

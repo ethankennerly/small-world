@@ -103,8 +103,7 @@ namespace Finegamedesign.SmallWorld
 				{
 					bot = spawn.SpawnWhereEmpty(botResource.name, spawnPoints, bot);
 					CellBot cellBot = bot.GetComponent<CellBot>();
-					cellBot.playerBehaviour.isBot = true;
-					cellBot.player.SetActive(true);
+					cellBot.Spawn();
 					bots[index] = bot;
 					break;
 				}

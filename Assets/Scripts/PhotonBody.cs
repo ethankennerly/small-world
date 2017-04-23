@@ -11,8 +11,8 @@ namespace Finegamedesign.SmallWorld
 		public static List<GameObject> instances = new List<GameObject>();
 		public bool isBot = false;
 
-	 	PhotonView photon;
-	 	Rigidbody2D body;
+	 	private PhotonView photon;
+	 	public Rigidbody2D body;
 
 		void Awake()
 		{
@@ -79,6 +79,12 @@ namespace Finegamedesign.SmallWorld
 			{
 				body.velocity = Vector2.zero;
 			}
+		}
+
+		public void ResetPosition()
+		{
+			transform.localPosition = Vector3.zero;
+			body.velocity = Vector2.zero;
 		}
 
 		private void UpdateQuit()

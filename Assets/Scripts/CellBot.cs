@@ -26,6 +26,13 @@ namespace Finegamedesign.SmallWorld
 			playerBehaviour = player.GetComponent<PhotonBody>();
 		}
 
+		public void Spawn()
+		{
+			playerBehaviour.isBot = true;
+			player.SetActive(true);
+			playerBehaviour.ResetPosition();
+		}
+
 		void Update()
 		{
 			if (null == player)

@@ -13,12 +13,14 @@ namespace Finegamedesign.SmallWorld
 		public PhotonBody playerBehaviour;
 		private GameObject chaseTo;
 		private GameObject fleeFrom;
+		private Collider2D vision;
 
 		private List<GameObject> visibleCells = new List<GameObject>();
 
 		void Awake()
 		{
 			player = transform.Find("PlayerCell").gameObject;
+			vision = GetComponent<Collider2D>();
 			playerBehaviour = player.GetComponent<PhotonBody>();
 		}
 
@@ -28,8 +30,18 @@ namespace Finegamedesign.SmallWorld
 			{
 				return;
 			}
-			transform.position = player.transform.position;
+			VisionFollowPlayer();
 			UpdateDirection();
+		}
+
+		private void VisionFollowPlayer()
+		{
+			Vector3 position = player.transform.position;
+			Vector2 offset = new Vector2(
+				position.x - transform.position.x,
+				position.y - transform.position.y
+			);
+			vision.offset = offset;
 		}
 
 		void OnTriggerEnter2D(Collider2D other)

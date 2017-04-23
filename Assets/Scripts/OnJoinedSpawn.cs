@@ -85,16 +85,16 @@ namespace Finegamedesign.SmallWorld
 				{
 					bots.Add(null);
 				}
-				for (int index = 0; index < bots.Count; index++)
+			}
+			for (int index = 0; index < bots.Count; index++)
+			{
+				GameObject bot = bots[index];
+				bool isActive = null != bot && bot.GetComponent<CellBot>().player.activeSelf;
+				if (!isActive)
 				{
-					GameObject bot = bots[index];
-					bool isActive = null != bot && bot.GetComponent<CellBot>().player.activeSelf;
-					if (!isActive)
-					{
-						bot = spawn.SpawnWhereEmpty(botResource.name, spawnPoints, bot);
-						bot.GetComponent<CellBot>().playerBehaviour.isBot = true;
-						break;
-					}
+					bot = spawn.SpawnWhereEmpty(botResource.name, spawnPoints, bot);
+					bot.GetComponent<CellBot>().playerBehaviour.isBot = true;
+					break;
 				}
 			}
 		}

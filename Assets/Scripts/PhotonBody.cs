@@ -68,14 +68,16 @@ namespace Finegamedesign.SmallWorld
 
 		public void Move(Vector3 direction)
 		{
-			direction.z = 0.0f;
-			if (0.00001f < direction.magnitude)
+			Vector2 velocity = body.velocity;
+			velocity.x = direction.x;
+			velocity.y = direction.y;
+			if (0.00001f < velocity.magnitude)
 			{
-				body.velocity = direction.normalized;
+				body.velocity = velocity.normalized;
 			}
 			else
 			{
-				body.velocity = Vector3.zero;
+				body.velocity = Vector2.zero;
 			}
 		}
 

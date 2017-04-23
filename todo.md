@@ -19,10 +19,10 @@ TODO
 - [x] Instead of destroy, deactivate eaten object.
 - [x] Camera follow.
 - [x] Post game, show size rank.
-- [ ] Critical mass end condition.
+- [x] Critical mass end condition.
+- [x] Spawn tiny cells after a delay.
 - [ ] Observe Jennifer play.
-- [ ] Spawn tiny cells farther away or after a delay.
-- [ ] Background tile.
+- [x] Tile background.
 - [ ] Bot cells eat smaller, avoid bigger.
 - [ ] Upload to Ludum Dare.
 - [ ] Sounds.

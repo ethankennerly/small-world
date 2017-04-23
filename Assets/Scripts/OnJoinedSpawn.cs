@@ -15,6 +15,8 @@ namespace Finegamedesign.SmallWorld
 		public SpawnController spawn = new SpawnController();
 		[SerializeField]
 		public SizeReferee referee = new SizeReferee();
+		public int maxBots = 10;
+		public GameObject botResource;
 
 		void Start()
 		{
@@ -47,6 +49,7 @@ namespace Finegamedesign.SmallWorld
 			if (PhotonNetwork.isMasterClient)
 			{
 				spawn.Update();
+				UpdateBot();
 			}
 			referee.player = player;
 			referee.Update();
@@ -66,6 +69,15 @@ namespace Finegamedesign.SmallWorld
 			Vector3 position = leader.transform.position;
 			position.z = follower.transform.position.z;
 			follower.transform.position = position;
+		}
+
+		public void UpdateBot()
+		{
+			if (referee.players.Count < maxBots)
+			{
+				GameObject bot = spawn.SpawnWhereEmpty(botResource.name, spawnPoints);
+				bot.GetComponent<CellBot>().playerBehaviour.isBot = true;
+			}
 		}
 	}
 }

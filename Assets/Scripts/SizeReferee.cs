@@ -48,6 +48,13 @@ namespace Finegamedesign.SmallWorld
 
 		private void UpdateRank()
 		{
+			for (int index = players.Count - 1; 0 <= index; index--)
+			{
+				if (null == players[index])
+				{
+					players.RemoveAt(index);
+				}
+			}
 			ReverseByScaleX(players);
 			Rank(player);
 			if (null != player && player.activeSelf)

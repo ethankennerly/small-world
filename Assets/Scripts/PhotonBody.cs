@@ -9,6 +9,7 @@ namespace Finegamedesign.SmallWorld
 		public static float eatRadiusThreshold = 1.125f;
 		public static int playerLayer = 8;
 		public static List<GameObject> instances = new List<GameObject>();
+		public bool isBot = false;
 
 	 	PhotonView photon;
 	 	Rigidbody2D body;
@@ -25,7 +26,7 @@ namespace Finegamedesign.SmallWorld
 
 		void FixedUpdate()
 		{
-			if (!photon.isMine)
+			if (!photon.isMine || isBot)
 			{
 				return;
 			}

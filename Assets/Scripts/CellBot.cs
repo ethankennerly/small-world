@@ -10,7 +10,7 @@ namespace Finegamedesign.SmallWorld
 		public float fleeRelativeScale = 1.25f;
 
 		private GameObject player;
-		private PhotonBody playerBehaviour;
+		public PhotonBody playerBehaviour;
 		private GameObject chaseTo;
 		private GameObject fleeFrom;
 
@@ -22,8 +22,12 @@ namespace Finegamedesign.SmallWorld
 			playerBehaviour = player.GetComponent<PhotonBody>();
 		}
 
-		void Update()
+		void FixedUpdate()
 		{
+			if (null == player)
+			{
+				return;
+			}
 			transform.position = player.transform.position;
 			UpdateDirection();
 		}

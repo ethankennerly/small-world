@@ -18,15 +18,16 @@ TODO
 - [x] 20 cells.  When a cell is eaten, another one appears.
 - [x] Instead of destroy, deactivate eaten object.
 - [x] Camera follow.
+- [x] Post game, show size rank.
 - [ ] Critical mass end condition.
-- [ ] Post game, show size rank.
 - [ ] Observe Jennifer play.
-- [ ] Spawn in available color.
-- [ ] Spawn in available cell image.
+- [ ] Spawn tiny cells farther away.
 - [ ] Background tile.
 - [ ] Bot cells eat smaller, avoid bigger.
 - [ ] Upload to Ludum Dare.
 - [ ] Sounds.
+- [ ] Spawn in available color.
+- [ ] Spawn in available cell image.
 - [ ] End after 2 minutes.  Restart clock.
 - [ ] Shuffle spawn points and jitter position in a halo.
 - [ ] When join, become one of the cells at medium size.
@@ -44,6 +45,7 @@ TODO
 - [ ] Cells are red or orange if bigger.
 - [ ] Boundaries of movable space are marked.
 - [ ] Angry emoji face on bigger cell that is approaching.
+- [ ] If 20 people max, play offline.
 - [ ] Match with less skilled players or bots.
 - [ ] Number on Jennifer indicating leaderboard rank.
 - [ ] Mark leaderboard number on the cell, such as with a crown on the cell.

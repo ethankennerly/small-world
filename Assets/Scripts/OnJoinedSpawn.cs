@@ -49,6 +49,10 @@ namespace Finegamedesign.SmallWorld
 			}
 			referee.player = player;
 			referee.Update();
+			if (referee.isGameEnd)
+			{
+				player.SetActive(false);
+			}
 		}
 
 		private void Follow(GameObject follower, GameObject leader, Vector3 reset)

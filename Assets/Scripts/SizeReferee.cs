@@ -11,21 +11,41 @@ namespace Finegamedesign.SmallWorld
 		public GameObject rankText;
 		public string rankFormat = "#{0}";
 		public string rankEmpty = "?";
-		public float winScale = 10.0f;
+		public float winScale = 2.0f;
 		public int playerRank;
 		public GameObject player;
+		public bool isGameBeginOnce = false;
+		public bool isGameEnd = false;
 
 		public void Update()
 		{
 			UpdateRank();
+			isGameEnd = IsBiggest(winScale);
+		}
+
+		private bool IsBiggest(float scale)
+		{
+			if (null == players || players.Count <= 0)
+			{
+				return false;
+			}
+			if (null == players[0] || !players[0].activeSelf)
+			{
+				return false;
+			}
+			return scale <= players[0].transform.localScale.x;
 		}
 
 		private void UpdateRank()
 		{
 			ReverseByScaleX(players);
 			Rank(player);
+			if (null != player && player.activeSelf)
+			{
+				isGameBeginOnce = true;
+			}
 			string text;
-			if (0 == playerRank)
+			if (0 == playerRank || !isGameBeginOnce)
 			{
 				text = rankEmpty;
 			}

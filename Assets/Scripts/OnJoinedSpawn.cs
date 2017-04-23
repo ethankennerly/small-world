@@ -37,8 +37,10 @@ namespace Finegamedesign.SmallWorld
 			{
 				if (player == null || !player.activeSelf)
 				{
+					AudioListener.volume = 0.25f;
 					if (Input.GetKeyDown(KeyCode.Return))
 					{
+						AudioListener.volume = 1.0f;
 						lobbyState = "introEnd";
 						player = spawn.SpawnWhereEmpty(prefab.name, spawnPoints, player);
 						referee.StartScale(player);

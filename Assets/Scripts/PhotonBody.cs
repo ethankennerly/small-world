@@ -10,10 +10,13 @@ namespace Finegamedesign.SmallWorld
 		public static int playerLayer = 8;
 		public static List<GameObject> instances = new List<GameObject>();
 		public bool isBot = false;
+		public float particleResetDelay = 6.0f;
 
 	 	private PhotonView photon;
 	 	public Rigidbody2D body;
 		public GameObject eatenParticle;
+		private GameObject particle;
+		private float particleResetTime = -1.0f;
 
 		void Awake()
 		{
@@ -23,10 +26,19 @@ namespace Finegamedesign.SmallWorld
 			}
 			body = GetComponent<Rigidbody2D>();
 			photon = GetComponent<PhotonView>();
+			if (null == particle)
+			{
+				particle = (GameObject) GameObject.Instantiate(eatenParticle, transform.position, Quaternion.identity);
+				particle.SetActive(false);
+			}
 		}
 
 		void FixedUpdate()
 		{
+			if (gameObject.activeSelf && particleResetTime <= Time.time)
+			{
+				particle.SetActive(false);
+			}
 			if (!photon.isMine || isBot)
 			{
 				return;
@@ -80,6 +92,10 @@ namespace Finegamedesign.SmallWorld
 			{
 				body.velocity = Vector2.zero;
 			}
+			if (gameObject.activeSelf && null != particle)
+			{
+				particle.SetActive(false);
+			}
 		}
 
 		public void ResetPosition()
@@ -128,11 +144,13 @@ namespace Finegamedesign.SmallWorld
 		{
 			Vector3 position = transform.position;
 			position.z -= 2.0f;
-			GameObject particle = (GameObject) GameObject.Instantiate(eatenParticle, position, Quaternion.identity);
 			Vector3 scale = transform.localScale;
 			scale.z = scale.x;
 			scale.y = scale.x;
+			particle.transform.position = position;
 			particle.transform.localScale = scale;
+			particle.SetActive(true);
+			particleResetTime = Time.time + particleResetDelay;
 		}
 	}
 }

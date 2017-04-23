@@ -36,6 +36,7 @@ namespace Finegamedesign.SmallWorld
 			TextView.SetText(rankText, text);
 		}
 
+		// Resolve ties to worse rank.
 		private void Rank(GameObject player)
 		{
 			playerRank = players.IndexOf(player);
@@ -45,6 +46,14 @@ namespace Finegamedesign.SmallWorld
 			}
 			else
 			{
+				for ( ; playerRank < players.Count - 1; playerRank++)
+				{
+					if (players[playerRank].transform.localScale.x
+					> players[playerRank + 1].transform.localScale.x)
+					{
+						break;
+					}
+				}
 				playerRank++;
 			}
 		}

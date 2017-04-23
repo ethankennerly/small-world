@@ -46,9 +46,9 @@ namespace Finegamedesign.SmallWorld
 			if (PhotonNetwork.isMasterClient)
 			{
 				spawn.Update();
-				referee.player = player;
-				referee.Update();
 			}
+			referee.player = player;
+			referee.Update();
 		}
 
 		private void Follow(GameObject follower, GameObject leader, Vector3 reset)

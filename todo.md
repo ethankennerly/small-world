@@ -32,11 +32,12 @@ TODO
 - [ ] When game is over, animate.
 - [ ] Do not spawn tiny cell inside a player.
 - [ ] Spawn bot or player farther away from other players.
+- [ ] Animate eat.
 - [ ] Observe Jennifer play.
+- [ ] Hear eat.
+- [ ] Read name on cell.
 - [ ] Upload to Ludum Dare.
 - [ ] Spawn tiny cell near oldest tiny cell.
-- [ ] Sounds.
-- [ ] Read name on cell.
 - [ ] Spawn in available color.
 - [ ] Spawn in available cell image.
 - [ ] End after 2 minutes.  Restart clock.

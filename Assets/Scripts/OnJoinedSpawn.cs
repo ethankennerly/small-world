@@ -21,6 +21,7 @@ namespace Finegamedesign.SmallWorld
 		public float botSpawnTime = 2.0f;
 		public GameObject botResource;
 		private List<GameObject> bots = new List<GameObject>();
+		private string lobbyState = "connectBegin";
 
 		void Start()
 		{
@@ -32,23 +33,31 @@ namespace Finegamedesign.SmallWorld
 
 		void Update()
 		{
+			
 			if (PhotonNetwork.inRoom)
 			{
 				if (player == null || !player.activeSelf)
 				{
-					AnimationView.SetState(lobbyAnimator, "introBegin");
 					if (Input.GetKeyDown(KeyCode.Return))
 					{
-						AnimationView.SetState(lobbyAnimator, "introEnd");
+						lobbyState = "introEnd";
 						player = spawn.SpawnWhereEmpty(prefab.name, spawnPoints, player);
 						referee.StartScale(player);
+					}
+					else if (referee.isGameBeginOnce)
+					{
+						lobbyState = "gameEnd";
+					}
+					else
+					{
+						lobbyState = "introBegin";
 					}
 				}
 				Follow(playerCamera, player, cameraLobby);
 			}
 			else
 			{
-				AnimationView.SetState(lobbyAnimator, "connectBegin");
+				lobbyState = "connectBegin";
 			}
 			if (PhotonNetwork.isMasterClient)
 			{
@@ -57,13 +66,13 @@ namespace Finegamedesign.SmallWorld
 			}
 			referee.player = player;
 			referee.Update();
+			AnimationView.SetState(lobbyAnimator, lobbyState);
 		}
 
 		private void Follow(GameObject follower, GameObject leader, Vector3 reset)
 		{
 			if (leader == null || !leader.activeSelf)
 			{
-				follower.transform.position = reset;
 				return;
 			}
 			Vector3 position = leader.transform.position;

@@ -30,13 +30,14 @@ TODO
 - [x] When game is over, bots don't auto restart game.
 - [x] When game is over, read rank from last play.
 - [x] When game is over, animate.
-- [ ] Spawn bot or player farther away from other players.
-- [ ] Do not spawn tiny cell inside a player.
-- [ ] Animate eat.
-- [ ] Observe Jennifer play.
+- [x] Scramble order of spawn points the same on all clients.
+- [ ] Eat particles.
 - [ ] Hear eat.
+- [ ] Observe Jennifer play.
 - [ ] Read name on cell.
+- [ ] Some smaller cells fleeing with fearful emoji facing their direction.
 - [ ] Upload to Ludum Dare.
+- [ ] Do not spawn tiny cell inside a player.
 - [ ] Spawn tiny cell near oldest tiny cell.
 - [ ] Spawn in available color.
 - [ ] Spawn in available cell image.
@@ -50,7 +51,6 @@ TODO
 - [ ] Tap to project in that direction, animating exhaust in opposite direction, with momentum.
 - [ ] Start with a trail of dots and a finger tapping at the dot.
 - [ ] Trails of dots to train maneuvering.
-- [ ] Some smaller cells fleeing with fearful emoji facing their direction.
 - [ ] Cells are same color.
 - [ ] Wrap world.
 - [ ] Cells are green or blue or pink if smaller.

@@ -33,7 +33,6 @@ namespace Finegamedesign.SmallWorld
 
 		void Update()
 		{
-			
 			if (PhotonNetwork.inRoom)
 			{
 				if (player == null || !player.activeSelf)

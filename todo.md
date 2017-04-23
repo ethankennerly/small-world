@@ -29,9 +29,9 @@ TODO
 - [x] Bot critical mass end condition destroy bot.
 - [x] When game is over, bots don't auto restart game.
 - [x] When game is over, read rank from last play.
-- [ ] When game is over, animate.
-- [ ] Do not spawn tiny cell inside a player.
+- [x] When game is over, animate.
 - [ ] Spawn bot or player farther away from other players.
+- [ ] Do not spawn tiny cell inside a player.
 - [ ] Animate eat.
 - [ ] Observe Jennifer play.
 - [ ] Hear eat.

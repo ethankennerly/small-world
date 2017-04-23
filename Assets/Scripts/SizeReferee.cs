@@ -11,8 +11,8 @@ namespace Finegamedesign.SmallWorld
 		public GameObject rankText;
 		public string rankFormat = "#{0}";
 		public string rankEmpty = "?";
-		public float startScale = 1.0f;
-		public float winScale = 8.0f;
+		public float startScale = 0.5f;
+		public float winScale = 5.0f;
 		public int playerRank;
 		public GameObject player;
 		public bool isGameBeginOnce = false;
@@ -98,10 +98,11 @@ namespace Finegamedesign.SmallWorld
 			}
 			ReverseByScaleX(players);
 			Rank(player);
-			if (null != player && player.activeSelf)
+			if (null == player || !player.activeSelf)
 			{
-				isGameBeginOnce = true;
+				return;
 			}
+			isGameBeginOnce = true;
 			string text;
 			if (0 == playerRank || !isGameBeginOnce)
 			{

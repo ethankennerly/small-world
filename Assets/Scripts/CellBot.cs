@@ -46,11 +46,11 @@ namespace Finegamedesign.SmallWorld
 
 		void OnTriggerEnter2D(Collider2D other)
 		{
-			if (other.gameObject.layer != player.layer)
+			GameObject otherObject = other.gameObject;
+			if (otherObject.layer != player.layer || otherObject == player)
 			{
 				return;
 			}
-			GameObject otherObject = other.gameObject;
 			if (visibleCells.IndexOf(otherObject) <= -1)
 			{
 				visibleCells.Add(otherObject);
@@ -59,11 +59,11 @@ namespace Finegamedesign.SmallWorld
 
 		void OnTriggerExit2D(Collider2D other)
 		{
-			if (other.gameObject.layer != player.layer)
+			GameObject otherObject = other.gameObject;
+			if (otherObject.layer != player.layer || otherObject == player)
 			{
 				return;
 			}
-			GameObject otherObject = other.gameObject;
 			if (0 <= visibleCells.IndexOf(otherObject))
 			{
 				visibleCells.Remove(otherObject);

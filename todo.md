@@ -16,7 +16,7 @@ TODO
 - [x] Read:  Press Enter to spawn.  Press arrow keys to move.
 - [x] Read name.
 - [x] 20 cells.  When a cell is eaten, another one appears.
-- [ ] Instead of destroy, deactivate eaten object.
+- [x] Instead of destroy, deactivate eaten object.
 - [ ] Camera follow.
 - [ ] Spawn in available color.
 - [ ] Shuffle spawn points and jitter position in a halo.

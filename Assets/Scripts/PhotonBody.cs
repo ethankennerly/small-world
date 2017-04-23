@@ -13,6 +13,7 @@ namespace Finegamedesign.SmallWorld
 
 	 	private PhotonView photon;
 	 	public Rigidbody2D body;
+		public GameObject eatenParticle;
 
 		void Awake()
 		{
@@ -121,6 +122,17 @@ namespace Finegamedesign.SmallWorld
 				transform.localScale = scale;
 				otherObject.SetActive(false);
 			}
+		}
+
+		void OnDisable()
+		{
+			Vector3 position = transform.position;
+			position.z -= 2.0f;
+			GameObject particle = (GameObject) GameObject.Instantiate(eatenParticle, position, Quaternion.identity);
+			Vector3 scale = transform.localScale;
+			scale.z = scale.x;
+			scale.y = scale.x;
+			particle.transform.localScale = scale;
 		}
 	}
 }

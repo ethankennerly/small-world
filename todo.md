@@ -23,7 +23,8 @@ TODO
 - [x] Spawn tiny cells after a delay.
 - [x] Observe Jennifer play.
 - [x] Tile background.
-- [ ] Bot cells eat smaller, avoid bigger.
+- [x] Bot cells eat smaller, avoid bigger.
+- [ ] Bot cells move at equal speed of player.
 - [ ] Bot respawns.
 - [ ] Observe Jennifer play.
 - [ ] Upload to Ludum Dare.

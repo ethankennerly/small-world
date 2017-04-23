@@ -24,7 +24,7 @@ namespace Finegamedesign.SmallWorld
 			playerBehaviour = player.GetComponent<PhotonBody>();
 		}
 
-		void FixedUpdate()
+		void Update()
 		{
 			if (null == player)
 			{

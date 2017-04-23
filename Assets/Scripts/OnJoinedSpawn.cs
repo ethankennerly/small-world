@@ -35,6 +35,7 @@ namespace Finegamedesign.SmallWorld
 					{
 						AnimationView.SetState(lobbyAnimator, "introEnd");
 						player = spawn.SpawnWhereEmpty(prefab.name, spawnPoints, player);
+						referee.StartScale(player);
 					}
 				}
 				Follow(playerCamera, player, cameraLobby);

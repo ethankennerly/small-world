@@ -11,6 +11,7 @@ namespace Finegamedesign.SmallWorld
 		public GameObject rankText;
 		public string rankFormat = "#{0}";
 		public string rankEmpty = "?";
+		public float startScale = 1.0f;
 		public float winScale = 2.0f;
 		public int playerRank;
 		public GameObject player;
@@ -21,6 +22,15 @@ namespace Finegamedesign.SmallWorld
 		{
 			UpdateRank();
 			isGameEnd = IsBiggest(winScale);
+		}
+
+		public void StartScale(GameObject player)
+		{
+			Vector3 scale = player.transform.localScale;
+			scale.x = startScale;
+			scale.y = startScale;
+			scale.z = startScale;
+			player.transform.localScale = scale;
 		}
 
 		private bool IsBiggest(float scale)

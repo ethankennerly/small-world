@@ -8,12 +8,14 @@ namespace Finegamedesign.SmallWorld
 	{
 		public float chaseRelativeScale = 0.875f;
 		public float fleeRelativeScale = 1.25f;
+		public float commitDuration = 1.0f;
 
 		public GameObject player;
 		public PhotonBody playerBehaviour;
-		private GameObject chaseTo;
-		private GameObject fleeFrom;
+		private GameObject prey;
+		private GameObject predator;
 		private Collider2D vision;
+		private float commitTime = -1.0f;
 
 		private List<GameObject> visibleCells = new List<GameObject>();
 
@@ -76,15 +78,25 @@ namespace Finegamedesign.SmallWorld
 			{
 				return;
 			}
+			if (Time.time < commitTime)
+			{
+				return;
+			}
 			SizeReferee.ReverseByScaleX(visibleCells);
 			UpdateFleeOrChase();
-			UpdateWander();
+			UpdateMove();
 		}
 
 		private void UpdateFleeOrChase()
 		{
-			fleeFrom = null;
-			chaseTo = null;
+			predator = null;
+			if (null != prey)
+			{
+				if (!prey.activeSelf)
+				{
+					prey = null;
+				}
+			}
 			float scale = player.transform.localScale.x;
 			for (int index = 0; index < visibleCells.Count; index++)
 			{
@@ -97,25 +109,32 @@ namespace Finegamedesign.SmallWorld
 				float interestRelativeScale = interestScale / scale;
 				if (fleeRelativeScale <= interestRelativeScale)
 				{
-					fleeFrom = interest;
-					playerBehaviour.MoveAwayFrom(fleeFrom.transform.position);
+					predator = interest;
 					break;
 				}
-				else if (interestRelativeScale <= chaseRelativeScale)
+				else if (null == prey && interestRelativeScale <= chaseRelativeScale)
 				{
-					chaseTo = interest;
-					playerBehaviour.MoveToward(chaseTo.transform.position);
+					prey = interest;
 					break;
 				}
 			}
 		}
 
-		private void UpdateWander()
+		private void UpdateMove()
 		{
-			if (null == fleeFrom && null == chaseTo)
+			if (null != predator)
+			{
+				playerBehaviour.MoveAwayFrom(predator.transform.position);
+			}
+			else if (null != prey)
+			{
+				playerBehaviour.MoveToward(prey.transform.position);
+			}
+			else
 			{
 				playerBehaviour.MoveToward(Vector3.zero);
 			}
+			commitTime = commitDuration + Time.time;
 		}
 	}
 }

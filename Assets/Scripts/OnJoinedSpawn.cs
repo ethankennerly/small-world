@@ -1,6 +1,7 @@
 using UnityEngine;
+using Finegamedesign.Utils;
 
-namespace Finegamedesign.Utils
+namespace Finegamedesign.SmallWorld
 {
 	public sealed class OnJoinedSpawn : MonoBehaviour
 	{
@@ -12,9 +13,12 @@ namespace Finegamedesign.Utils
 		private GameObject player;
 		[SerializeField]
 		public SpawnController spawn = new SpawnController();
+		[SerializeField]
+		public SizeReferee referee = new SizeReferee();
 
 		void Start()
 		{
+			referee.players = PhotonBody.instances;
 			spawn.spawnPoints = spawnPoints;
 			spawn.Setup();
 			cameraLobby = playerCamera.transform.position;
@@ -42,6 +46,8 @@ namespace Finegamedesign.Utils
 			if (PhotonNetwork.isMasterClient)
 			{
 				spawn.Update();
+				referee.player = player;
+				referee.Update();
 			}
 		}
 

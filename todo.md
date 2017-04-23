@@ -17,15 +17,18 @@ TODO
 - [x] Read name.
 - [x] 20 cells.  When a cell is eaten, another one appears.
 - [x] Instead of destroy, deactivate eaten object.
-- [ ] Camera follow.
-- [ ] Spawn in available color.
-- [ ] Shuffle spawn points and jitter position in a halo.
-- [ ] Bot cells eat smaller, avoid bigger.
-- [ ] Sounds.
-- [ ] Upload to Ludum Dare.
+- [x] Camera follow.
 - [ ] Critical mass end condition.
+- [ ] Post game, show size rank.
+- [ ] Observe Jennifer play.
+- [ ] Spawn in available color.
+- [ ] Spawn in available cell image.
+- [ ] Background tile.
+- [ ] Bot cells eat smaller, avoid bigger.
+- [ ] Upload to Ludum Dare.
+- [ ] Sounds.
 - [ ] End after 2 minutes.  Restart clock.
-- [ ] Show size rank.
+- [ ] Shuffle spawn points and jitter position in a halo.
 - [ ] When join, become one of the cells at medium size.
 - [ ] Two teams:  red versus blue.
 - [ ] Meter of relative size.

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using Finegamedesign.Utils;
 
 namespace Finegamedesign.SmallWorld
@@ -7,12 +8,17 @@ namespace Finegamedesign.SmallWorld
 	{
 		public static float eatRadiusThreshold = 1.125f;
 		public static int playerLayer = 8;
+		public static List<GameObject> instances = new List<GameObject>();
 
 	 	PhotonView photon;
 	 	Rigidbody2D body;
 
 		void Awake()
 		{
+			if (instances.IndexOf(gameObject) <= -1)
+			{
+				instances.Add(gameObject);
+			}
 			body = GetComponent<Rigidbody2D>();
 			photon = GetComponent<PhotonView>();
 		}

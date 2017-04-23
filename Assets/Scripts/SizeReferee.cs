@@ -45,7 +45,14 @@ namespace Finegamedesign.SmallWorld
 			{
 				isGameEnd = false;
 			}
-			isGameEnd = IsBiggest(winScale);
+			else if (playerActiveCount <= 0)
+			{
+				isGameEnd = true;
+			}
+			else
+			{
+				isGameEnd = IsBiggest(winScale);
+			}
 			if(!isGameEnd)
 			{
 				return;

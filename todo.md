@@ -28,6 +28,7 @@ TODO
 - [x] Bot respawns.
 - [x] Bot critical mass end condition destroy bot.
 - [ ] When game is over, bots don't auto restart game.
+- [ ] When game is over, read rank from last play.
 - [ ] When game is over, animate.
 - [ ] Observe Jennifer play.
 - [ ] Upload to Ludum Dare.

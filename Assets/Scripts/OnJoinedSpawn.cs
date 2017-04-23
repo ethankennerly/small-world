@@ -17,6 +17,8 @@ namespace Finegamedesign.SmallWorld
 		[SerializeField]
 		public SizeReferee referee = new SizeReferee();
 		public int maxBots = 10;
+		public float botSpawnDelay = 2.0f;
+		public float botSpawnTime = 2.0f;
 		public GameObject botResource;
 		private List<GameObject> bots = new List<GameObject>();
 
@@ -73,6 +75,11 @@ namespace Finegamedesign.SmallWorld
 		{
 			if (!referee.isGameBeginOnce || referee.isGameEnd)
 			{
+				botSpawnTime = Time.time + botSpawnDelay;
+				return;
+			}
+			if (Time.time < botSpawnTime)
+			{
 				return;
 			}
 			if (referee.players.Count < maxBots)
@@ -101,6 +108,7 @@ namespace Finegamedesign.SmallWorld
 					CellBot cellBot = bot.GetComponent<CellBot>();
 					cellBot.Spawn();
 					referee.StartScale(cellBot.player);
+					botSpawnTime = Time.time + botSpawnDelay;
 					bots[index] = bot;
 					break;
 				}

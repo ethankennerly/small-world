@@ -96,3 +96,14 @@ Other ideas to motivate Jennifer:
 - Mark leaderboard number on the cell, such as with a crown on the cell.
 - Cells that change color of your own cell.
 - Cells that decorate your cell with a pattern.
+
+
+Sun, Apr 23, 2017  8:56:26 AM
+
+Jennifer Russ played Big Cell about 30 seconds.
+
+Top opportunities to motivate Jennifer to play 1 minute:
+
+- Downloaded to her computer.
+- Another cell.
+- Read "play" instead of "spawn".

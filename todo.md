@@ -21,9 +21,10 @@ TODO
 - [x] Post game, show size rank.
 - [x] Critical mass end condition.
 - [x] Spawn tiny cells after a delay.
-- [ ] Observe Jennifer play.
+- [x] Observe Jennifer play.
 - [x] Tile background.
 - [ ] Bot cells eat smaller, avoid bigger.
+- [ ] Observe Jennifer play.
 - [ ] Upload to Ludum Dare.
 - [ ] Sounds.
 - [ ] Spawn in available color.

@@ -5,7 +5,7 @@ Play with up to 20 people in this small world.  Play here:
 <https://ldjam.com/events/ludum-dare/38/$19366>
 
 - Eat or be eaten
-- Press enter to spawn
+- Press enter to play
 - Press arrow keys to move
 - Eat smaller cells
 - Be eaten by bigger cells

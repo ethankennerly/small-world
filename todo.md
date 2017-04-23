@@ -27,6 +27,7 @@ TODO
 - [ ] Observe Jennifer play.
 - [ ] Upload to Ludum Dare.
 - [ ] Sounds.
+- [ ] Read name on cell.
 - [ ] Spawn in available color.
 - [ ] Spawn in available cell image.
 - [ ] End after 2 minutes.  Restart clock.

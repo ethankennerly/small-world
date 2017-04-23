@@ -58,14 +58,25 @@ namespace Finegamedesign.SmallWorld
 
 		public void MoveToward(Vector3 target)
 		{
-			Vector3 difference = target - transform.position;
-			body.velocity = difference.normalized;
+			Move(target - transform.position);
 		}
 
 		public void MoveAwayFrom(Vector3 away)
 		{
-			Vector3 difference = transform.position - away;
-			body.velocity = difference.normalized;
+			Move(transform.position - away);
+		}
+
+		public void Move(Vector3 direction)
+		{
+			direction.z = 0.0f;
+			if (0.00001f < direction.magnitude)
+			{
+				body.velocity = direction.normalized;
+			}
+			else
+			{
+				body.velocity = Vector3.zero;
+			}
 		}
 
 		private void UpdateQuit()

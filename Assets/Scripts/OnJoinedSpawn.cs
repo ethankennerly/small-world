@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using Finegamedesign.Utils;
 
 namespace Finegamedesign.SmallWorld
@@ -17,6 +18,7 @@ namespace Finegamedesign.SmallWorld
 		public SizeReferee referee = new SizeReferee();
 		public int maxBots = 10;
 		public GameObject botResource;
+		private List<GameObject> bots = new List<GameObject>();
 
 		void Start()
 		{
@@ -53,7 +55,7 @@ namespace Finegamedesign.SmallWorld
 			}
 			referee.player = player;
 			referee.Update();
-			if (referee.isGameEnd)
+			if (referee.isGameEnd && null != player)
 			{
 				player.SetActive(false);
 			}
@@ -73,10 +75,27 @@ namespace Finegamedesign.SmallWorld
 
 		public void UpdateBot()
 		{
+			if (!referee.isGameBeginOnce || referee.isGameEnd)
+			{
+				return;
+			}
 			if (referee.players.Count < maxBots)
 			{
-				GameObject bot = spawn.SpawnWhereEmpty(botResource.name, spawnPoints);
-				bot.GetComponent<CellBot>().playerBehaviour.isBot = true;
+				if (bots.Count < maxBots)
+				{
+					bots.Add(null);
+				}
+				for (int index = 0; index < bots.Count; index++)
+				{
+					GameObject bot = bots[index];
+					bool isActive = null != bot && bot.GetComponent<CellBot>().player.activeSelf;
+					if (!isActive)
+					{
+						bot = spawn.SpawnWhereEmpty(botResource.name, spawnPoints, bot);
+						bot.GetComponent<CellBot>().playerBehaviour.isBot = true;
+						break;
+					}
+				}
 			}
 		}
 	}

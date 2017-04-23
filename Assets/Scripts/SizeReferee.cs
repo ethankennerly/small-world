@@ -12,7 +12,7 @@ namespace Finegamedesign.SmallWorld
 		public string rankFormat = "#{0}";
 		public string rankEmpty = "?";
 		public float startScale = 1.0f;
-		public float winScale = 2.0f;
+		public float winScale = 10.0f;
 		public int playerRank;
 		public GameObject player;
 		public bool isGameBeginOnce = false;

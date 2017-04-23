@@ -9,7 +9,7 @@ namespace Finegamedesign.SmallWorld
 		public float chaseRelativeScale = 0.875f;
 		public float fleeRelativeScale = 1.25f;
 
-		private GameObject player;
+		public GameObject player;
 		public PhotonBody playerBehaviour;
 		private GameObject chaseTo;
 		private GameObject fleeFrom;

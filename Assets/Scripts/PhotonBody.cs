@@ -33,7 +33,7 @@ namespace Finegamedesign.SmallWorld
 			UpdateQuit();
 		}
 
-		void UpdateMovement()
+		private void UpdateMovement()
 		{
 			Vector2 velocity = body.velocity;
 			if (Input.GetAxisRaw("Horizontal") < -0.5f)
@@ -55,7 +55,19 @@ namespace Finegamedesign.SmallWorld
 			body.velocity = velocity.normalized;
 		}
 
-		void UpdateQuit()
+		public void MoveToward(Vector3 target)
+		{
+			Vector3 difference = target - transform.position;
+			body.velocity = difference.normalized;
+		}
+
+		public void MoveAwayFrom(Vector3 away)
+		{
+			Vector3 difference = transform.position - away;
+			body.velocity = difference.normalized;
+		}
+
+		private void UpdateQuit()
 		{
 			if (Input.GetKeyDown(KeyCode.Escape))
 			{

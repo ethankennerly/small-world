@@ -24,6 +24,7 @@ TODO
 - [x] Observe Jennifer play.
 - [x] Tile background.
 - [ ] Bot cells eat smaller, avoid bigger.
+- [ ] Bot respawns.
 - [ ] Observe Jennifer play.
 - [ ] Upload to Ludum Dare.
 - [ ] Sounds.

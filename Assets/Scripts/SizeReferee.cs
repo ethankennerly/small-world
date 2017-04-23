@@ -88,7 +88,7 @@ namespace Finegamedesign.SmallWorld
 			}
 		}
 
-		private void ReverseByScaleX(List<GameObject> scaledObjects)
+		public static void ReverseByScaleX(List<GameObject> scaledObjects)
 		{
 			scaledObjects.Sort(
 				delegate(GameObject a, GameObject b)

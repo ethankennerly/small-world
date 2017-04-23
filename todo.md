@@ -21,7 +21,7 @@ TODO
 - [x] Post game, show size rank.
 - [ ] Critical mass end condition.
 - [ ] Observe Jennifer play.
-- [ ] Spawn tiny cells farther away.
+- [ ] Spawn tiny cells farther away or after a delay.
 - [ ] Background tile.
 - [ ] Bot cells eat smaller, avoid bigger.
 - [ ] Upload to Ludum Dare.

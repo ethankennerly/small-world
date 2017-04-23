@@ -6,6 +6,7 @@ namespace Finegamedesign.Utils
 	{
 		public static int collisionLayer = 8;
 		public int count = 0;
+		public float emptyTime = -1.0f;
 		public bool isVerbose = false;
 
 		void OnTriggerEnter2D(Collider2D other)
@@ -26,6 +27,10 @@ namespace Finegamedesign.Utils
 			if (collisionLayer == other.gameObject.layer && 1 <= count)
 			{
 				count--;
+				if (count == 0)
+				{
+					emptyTime = Time.time;
+				}
 			}
 		}
 	}

@@ -8,6 +8,7 @@ namespace Finegamedesign.Utils
 		public GameObject maintainedResource;
 		public GameObject[] maintainedObjects;
 		public GameObject[] spawnPoints;
+		public float emptyTime = 10.0f;
 		private int spawnIndex = 0;
 
 		public void Setup()
@@ -40,21 +41,24 @@ namespace Finegamedesign.Utils
 		private GameObject WhereEmpty(GameObject[] spawnPoints)
 		{
 			GameObject spawnTarget = null;
+			float readyTime = Time.time - emptyTime;
+			int spawnLength = spawnPoints.Length;
 			if (null == spawnPoints)
 			{
 				Debug.Log("OnJoinedRoom: No prefab or no spawn points.");
 				return spawnTarget;
 			}
-			for (int attempt = 0; attempt < spawnPoints.Length; attempt++)
+			for (int attempt = 0; attempt < spawnLength; attempt++)
 			{
-				for (int index = 0; index < spawnPoints.Length; index++)
+				float attemptTime = readyTime + emptyTime * 0.5f * attempt / spawnLength;
+				for (int index = 0; index < spawnLength; index++)
 				{
-					int pointIndex = (spawnIndex + index) % spawnPoints.Length;
+					int pointIndex = (spawnIndex + index) % spawnLength;
 					GameObject spawn = spawnPoints[pointIndex];
 					CountTrigger trigger = spawn.GetComponent<CountTrigger>();
-					if (null != trigger && trigger.count <= attempt)
+					if (null != trigger && trigger.count <= attempt && trigger.emptyTime <= attemptTime)
 					{
-						spawnIndex = (pointIndex + 1) % spawnPoints.Length;
+						spawnIndex = (pointIndex + 1) % spawnLength;
 						spawnTarget = spawn;
 						return spawnTarget;
 					}

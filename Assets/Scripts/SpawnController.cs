@@ -9,6 +9,8 @@ namespace Finegamedesign.Utils
 		public GameObject[] maintainedObjects;
 		public GameObject[] spawnPoints;
 		public float emptyTime = 10.0f;
+		public float spawnTime = -1.0f;
+		public float spawnDelay = 2.0f;
 		private int spawnIndex = 0;
 
 		public void Setup()
@@ -48,9 +50,10 @@ namespace Finegamedesign.Utils
 				Debug.Log("OnJoinedRoom: No prefab or no spawn points.");
 				return spawnTarget;
 			}
-			for (int attempt = 0; attempt < spawnLength; attempt++)
+			int attemptCount = spawnLength;
+			for (int attempt = 0; attempt < attemptCount; attempt++)
 			{
-				float attemptTime = readyTime + emptyTime * 0.5f * attempt / spawnLength;
+				float attemptTime = readyTime + emptyTime - 0.5f * attempt / attemptCount;
 				for (int index = 0; index < spawnLength; index++)
 				{
 					int pointIndex = (spawnIndex + index) % spawnLength;
@@ -74,6 +77,10 @@ namespace Finegamedesign.Utils
 
 		private void UpdateMaintainedObjects()
 		{
+			if (Time.time < spawnTime)
+			{
+				return;
+			}
 			for (int index = 0; index < maintainedObjects.Length; index++)
 			{
 				GameObject maintainedObject = maintainedObjects[index];
@@ -83,6 +90,7 @@ namespace Finegamedesign.Utils
 				}
 				maintainedObject = SpawnWhereEmpty(maintainedResource.name, spawnPoints, maintainedObject);
 				maintainedObjects[index] = maintainedObject;
+				spawnTime = Time.time + spawnDelay;
 			}
 		}
 	}

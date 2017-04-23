@@ -24,8 +24,12 @@ TODO
 - [x] Observe Jennifer play.
 - [x] Tile background.
 - [x] Bot cells eat smaller, avoid bigger.
-- [ ] Bot cells move at equal speed of player.
-- [ ] Bot respawns.
+- [x] Bot cells move at equal speed of player.
+- [x] Bot respawns.
+- [ ] Do not spawn tiny cell inside a player.
+- [ ] Spawn bot or player farther away from other players.
+- [ ] Bot critical mass end condition destroy bot.
+- [ ] Spawn tiny cell near oldest tiny cell.
 - [ ] Observe Jennifer play.
 - [ ] Upload to Ludum Dare.
 - [ ] Sounds.

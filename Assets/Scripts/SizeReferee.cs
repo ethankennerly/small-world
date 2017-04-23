@@ -21,7 +21,20 @@ namespace Finegamedesign.SmallWorld
 		public void Update()
 		{
 			UpdateRank();
+			UpdateGameEnd();
+		}
+
+		private void UpdateGameEnd()
+		{
 			isGameEnd = IsBiggest(winScale);
+			if(!isGameEnd)
+			{
+				return;
+			}
+			for (int index = 0; index < players.Count; index++)
+			{
+				players[index].SetActive(false);
+			}
 		}
 
 		public void StartScale(GameObject player)

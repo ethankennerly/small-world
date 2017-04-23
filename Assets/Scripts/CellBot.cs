@@ -78,10 +78,7 @@ namespace Finegamedesign.SmallWorld
 			}
 			SizeReferee.ReverseByScaleX(visibleCells);
 			UpdateFleeOrChase();
-			if (null == fleeFrom && null == chaseTo)
-			{
-				UpdateRandomDirection();
-			}
+			UpdateWander();
 		}
 
 		private void UpdateFleeOrChase()
@@ -97,14 +94,14 @@ namespace Finegamedesign.SmallWorld
 					continue;
 				}
 				float interestScale = interest.transform.localScale.x;
-				float relativeScale = interestScale / scale;
-				if (relativeScale <= fleeRelativeScale)
+				float interestRelativeScale = interestScale / scale;
+				if (fleeRelativeScale <= interestRelativeScale)
 				{
 					fleeFrom = interest;
 					playerBehaviour.MoveAwayFrom(fleeFrom.transform.position);
 					break;
 				}
-				else if (chaseRelativeScale <= relativeScale)
+				else if (interestRelativeScale <= chaseRelativeScale)
 				{
 					chaseTo = interest;
 					playerBehaviour.MoveToward(chaseTo.transform.position);
@@ -113,9 +110,12 @@ namespace Finegamedesign.SmallWorld
 			}
 		}
 
-		// TODO
 		private void UpdateRandomDirection()
 		{
+			if (null == fleeFrom && null == chaseTo)
+			{
+				playerBehaviour.MoveToward(Vector3.zero);
+			}
 		}
 	}
 }

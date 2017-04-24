@@ -3,34 +3,28 @@ using System.Collections.Generic;
 
 namespace Finegamedesign.SmallWorld
 {
-	[RequireComponent(typeof(Collider2D))]
+	[RequireComponent(typeof(BoxCollider2D))]
 	public sealed class CellBot : MonoBehaviour
 	{
 		public float chaseRelativeScale = 0.875f;
 		public float fleeRelativeScale = 1.25f;
 		public float commitDuration = 1.0f;
+		private Vector2 visionSize;
 
 		public GameObject player;
-		public PhotonBody playerBehaviour;
+		private PhotonBody playerBehaviour;
 		private GameObject prey;
 		private GameObject predator;
-		private Collider2D vision;
+		private BoxCollider2D vision;
 		private float commitTime = -1.0f;
 
 		private List<GameObject> visibleCells = new List<GameObject>();
 
 		void Awake()
 		{
-			player = transform.Find("PlayerCell").gameObject;
-			vision = GetComponent<Collider2D>();
+			vision = GetComponent<BoxCollider2D>();
+			visionSize = new Vector2(vision.size.x, vision.size.y);
 			playerBehaviour = player.GetComponent<PhotonBody>();
-		}
-
-		public void Spawn()
-		{
-			playerBehaviour.isBot = true;
-			player.SetActive(true);
-			playerBehaviour.ResetPosition();
 		}
 
 		void Update()
@@ -39,18 +33,17 @@ namespace Finegamedesign.SmallWorld
 			{
 				return;
 			}
-			VisionFollowPlayer();
+			VisionInverseScale();
 			UpdateDirection();
 		}
 
-		private void VisionFollowPlayer()
+		private void VisionInverseScale()
 		{
-			Vector3 position = player.transform.position;
-			Vector2 offset = new Vector2(
-				position.x - transform.position.x,
-				position.y - transform.position.y
-			);
-			vision.offset = offset;
+			Vector3 scale = player.transform.localScale;
+			Vector2 size = new Vector2(
+				visionSize.x / scale.x,
+				visionSize.y / scale.y);
+			vision.size = size;
 		}
 
 		void OnTriggerEnter2D(Collider2D other)

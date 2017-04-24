@@ -25,7 +25,7 @@ namespace Finegamedesign.SmallWorld
 
 		void Start()
 		{
-			referee.players = PhotonBody.instances;
+			referee.players = PhotonBody.mobiles;
 			spawn.spawnPoints = spawnPoints;
 			spawn.Setup();
 			cameraLobby = playerCamera.transform.position;
@@ -43,7 +43,6 @@ namespace Finegamedesign.SmallWorld
 						AudioListener.volume = 1.0f;
 						lobbyState = "introEnd";
 						player = spawn.SpawnWhereEmpty(prefab.name, spawnPoints, player);
-						referee.StartScale(player);
 					}
 					else if (referee.isGameBeginOnce)
 					{
@@ -104,8 +103,8 @@ namespace Finegamedesign.SmallWorld
 			{
 				GameObject bot = bots[index];
 				bool isActive = null != bot
-					&& null != bot.GetComponent<CellBot>().player
-					&& bot.GetComponent<CellBot>().player.activeSelf;
+					&& null != bot.gameObject
+					&& bot.gameObject.activeSelf;
 				if (isActive)
 				{
 					botCount++;
@@ -117,9 +116,6 @@ namespace Finegamedesign.SmallWorld
 				else
 				{
 					bot = spawn.SpawnWhereEmpty(botResource.name, spawnPoints, bot);
-					CellBot cellBot = bot.GetComponent<CellBot>();
-					cellBot.Spawn();
-					referee.StartScale(cellBot.player);
 					botSpawnTime = Time.time + botSpawnDelay;
 					bots[index] = bot;
 					break;

@@ -11,7 +11,6 @@ namespace Finegamedesign.SmallWorld
 		public GameObject rankText;
 		public string rankFormat = "#{0}";
 		public string rankEmpty = "?";
-		public float startScale = 0.5f;
 		public float winScale = 5.0f;
 		public int playerRank;
 		public GameObject player;
@@ -60,18 +59,8 @@ namespace Finegamedesign.SmallWorld
 			for (index = 0; index < players.Count; index++)
 			{
 				aPlayer = players[index];
-				aPlayer.SetActive(false);
-				StartScale(aPlayer);
+				PhotonBody.RPC(aPlayer.GetComponent<PhotonView>(), "OnEaten");
 			}
-		}
-
-		public void StartScale(GameObject player)
-		{
-			Vector3 scale = player.transform.localScale;
-			scale.x = startScale;
-			scale.y = startScale;
-			scale.z = startScale;
-			player.transform.localScale = scale;
 		}
 
 		private bool IsBiggest(float scale)

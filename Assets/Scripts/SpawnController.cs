@@ -1,6 +1,7 @@
 using UnityEngine;
+using Finegamedesign.Utils;
 
-namespace Finegamedesign.Utils
+namespace Finegamedesign.SmallWorld
 {
 	[System.Serializable]
 	public sealed class SpawnController
@@ -32,10 +33,16 @@ namespace Finegamedesign.Utils
 					resourceName, spawnTarget.transform.position,
 					Quaternion.identity, 0);
 			}
-			else
+			else if (null != spawnTarget)
 			{
-				spawnedObject.transform.position = spawnTarget.transform.position;
-				spawnedObject.SetActive(true);
+				PhotonBody photonBody = spawnedObject.GetComponent<PhotonBody>();
+				if (null != photonBody)
+				{
+					photonBody.Setup();
+					PhotonBody.RPC(photonBody.photon,
+						"Spawn",
+						spawnTarget.transform.position);
+				}
 			}
 			return spawnedObject;
 		}
@@ -50,7 +57,7 @@ namespace Finegamedesign.Utils
 				Debug.Log("OnJoinedRoom: No prefab or no spawn points.");
 				return spawnTarget;
 			}
-			int attemptCount = spawnLength;
+			int attemptCount = 1;
 			for (int attempt = 0; attempt < attemptCount; attempt++)
 			{
 				float attemptTime = readyTime + emptyTime - 0.5f * attempt / attemptCount;
@@ -59,7 +66,7 @@ namespace Finegamedesign.Utils
 					int pointIndex = (spawnIndex + index) % spawnLength;
 					GameObject spawn = spawnPoints[pointIndex];
 					CountTrigger trigger = spawn.GetComponent<CountTrigger>();
-					if (null != trigger && trigger.count <= attempt && trigger.emptyTime <= attemptTime)
+					if (null != trigger && trigger.count <= 0 && trigger.emptyTime <= attemptTime)
 					{
 						spawnIndex = (pointIndex + 1) % spawnLength;
 						spawnTarget = spawn;

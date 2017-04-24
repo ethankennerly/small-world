@@ -34,6 +34,7 @@ TODO
 - [x] Eat particles.
 - [x] Hear eat.
 - [ ] Broadcast spawn to all clients.
+- [ ] Do not spawn bot inside of another player.
 - [ ] Observe Jennifer play.
 - [ ] Read name on cell.
 - [ ] Some smaller cells fleeing with fearful emoji facing their direction.

@@ -4,26 +4,58 @@ using Finegamedesign.Utils;
 
 namespace Finegamedesign.SmallWorld
 {
+	[RequireComponent(typeof(Rigidbody2D), typeof(PhotonView))]
 	public sealed class PhotonBody : MonoBehaviour
 	{
 		public static float eatRadiusThreshold = 1.125f;
 		public static int playerLayer = 8;
-		public static List<GameObject> instances = new List<GameObject>();
+		public static List<GameObject> mobiles = new List<GameObject>();
 		public bool isBot = false;
 		public bool isStatic = false;
 		public float particleResetDelay = 6.0f;
+		public float startScale = 0.5f;
 
-	 	private PhotonView photon;
+	 	public PhotonView photon;
 	 	public Rigidbody2D body;
 		public GameObject eatenParticle;
 		private GameObject particle;
 		private float particleResetTime = -1.0f;
 
-		void Awake()
+		// AllBufferedViaServer
+		// """ Sends the RPC to everyone (including this client) through the server and buffers it for players joining later.
+
+		// This client executes the RPC like any other when it received it from the server. Benefit: The server's order of sending the RPCs is the same on all clients."""
+		// https://doc-api.photonengine.com/en/pun/current/group__public_api.html
+
+		public static void RPC(PhotonView owner, string methodName)
 		{
-			if (!isStatic && instances.IndexOf(gameObject) <= -1)
+			owner.RPC(methodName, PhotonTargets.All);
+		}
+
+		public static void RPC(PhotonView owner, string methodName, Vector3 position)
+		{
+			owner.RPC(methodName, PhotonTargets.All, position);
+		}
+
+		public void Awake()
+		{
+			Setup();
+		}
+
+		void OnEnable()
+		{
+			Setup();
+		}
+
+		public void Setup()
+		{
+			if (!isStatic && mobiles.IndexOf(gameObject) <= -1)
 			{
-				instances.Add(gameObject);
+				mobiles.Add(gameObject);
+			}
+			if (!isStatic)
+			{
+				StartScale();
 			}
 			body = GetComponent<Rigidbody2D>();
 			photon = GetComponent<PhotonView>();
@@ -32,6 +64,15 @@ namespace Finegamedesign.SmallWorld
 				particle = (GameObject) GameObject.Instantiate(eatenParticle, transform.position, Quaternion.identity);
 				particle.SetActive(false);
 			}
+		}
+
+		public void StartScale()
+		{
+			Vector3 scale = transform.localScale;
+			scale.x = startScale;
+			scale.y = startScale;
+			scale.z = startScale;
+			transform.localScale = scale;
 		}
 
 		void FixedUpdate()
@@ -126,7 +167,8 @@ namespace Finegamedesign.SmallWorld
 			}
 			if (MayEatSmaller(otherObject))
 			{
-				otherObject.GetComponent<PhotonView>().RPC("OnEaten", PhotonTargets.All);
+				otherObject.GetComponent<PhotonView>().RPC(
+					"OnEaten", PhotonTargets.All);
 			}
 		}
 
@@ -147,18 +189,15 @@ namespace Finegamedesign.SmallWorld
 			return false;
 		}
 
-		void OnEnable()
-		{
-			photon.RPC("Enable", PhotonTargets.All);
-		}
-
 		[PunRPC]
-		public void Enable()
+		void Spawn(Vector3 position)
 		{
+			Setup();
 			if (null != gameObject && !gameObject.activeSelf)
 			{
 				gameObject.SetActive(true);
 			}
+			transform.position = position;
 		}
 
 		[PunRPC]

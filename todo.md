@@ -31,8 +31,8 @@ TODO
 - [x] When game is over, read rank from last play.
 - [x] When game is over, animate.
 - [x] Scramble order of spawn points the same on all clients.
-- [ ] Eat particles.
-- [ ] Hear eat.
+- [x] Eat particles.
+- [x] Hear eat.
 - [ ] Observe Jennifer play.
 - [ ] Read name on cell.
 - [ ] Some smaller cells fleeing with fearful emoji facing their direction.

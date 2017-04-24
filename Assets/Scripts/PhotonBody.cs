@@ -10,6 +10,7 @@ namespace Finegamedesign.SmallWorld
 		public static int playerLayer = 8;
 		public static List<GameObject> instances = new List<GameObject>();
 		public bool isBot = false;
+		public bool isStatic = false;
 		public float particleResetDelay = 6.0f;
 
 	 	private PhotonView photon;
@@ -20,7 +21,7 @@ namespace Finegamedesign.SmallWorld
 
 		void Awake()
 		{
-			if (instances.IndexOf(gameObject) <= -1)
+			if (!isStatic && instances.IndexOf(gameObject) <= -1)
 			{
 				instances.Add(gameObject);
 			}
@@ -35,11 +36,11 @@ namespace Finegamedesign.SmallWorld
 
 		void FixedUpdate()
 		{
-			if (gameObject.activeSelf && particleResetTime <= Time.time)
+			if (null != gameObject && gameObject.activeSelf && particleResetTime <= Time.time)
 			{
 				particle.SetActive(false);
 			}
-			if (!photon.isMine || isBot)
+			if (!photon.isMine || isBot || isStatic)
 			{
 				return;
 			}
@@ -92,7 +93,7 @@ namespace Finegamedesign.SmallWorld
 			{
 				body.velocity = Vector2.zero;
 			}
-			if (gameObject.activeSelf && null != particle)
+			if (null != gameObject && gameObject.activeSelf && null != particle)
 			{
 				particle.SetActive(false);
 			}
@@ -115,16 +116,23 @@ namespace Finegamedesign.SmallWorld
 		void OnCollisionEnter2D(Collision2D other)
 		{
 			GameObject otherObject = other.gameObject;
+			if (null == otherObject)
+			{
+				return;
+			}
 			Debug.Log("OnCollisionEnter2D: other layer " + otherObject.layer
 				+ " my layer " + gameObject.layer);
 			if (gameObject.layer != otherObject.layer)
 			{
 				return;
 			}
-			MayEatSmaller(otherObject);
+			if (MayEatSmaller(otherObject))
+			{
+				otherObject.GetComponent<PhotonView>().RPC("OnEaten", PhotonTargets.All);
+			}
 		}
 
-		void MayEatSmaller(GameObject otherObject)
+		bool MayEatSmaller(GameObject otherObject)
 		{
 			Vector3 otherScale = otherObject.transform.localScale;
 			float otherRadius = Mathf.Abs(otherScale.x);
@@ -136,12 +144,18 @@ namespace Finegamedesign.SmallWorld
 				scale.x += gain;
 				scale.y += gain;
 				transform.localScale = scale;
-				otherObject.SetActive(false);
+				return true;
 			}
+			return false;
 		}
 
-		void OnDisable()
+		[PunRPC]
+		public void OnEaten()
 		{
+			if (null == particle)
+			{
+				return;
+			}
 			Vector3 position = transform.position;
 			position.z -= 2.0f;
 			Vector3 scale = transform.localScale;
@@ -151,6 +165,7 @@ namespace Finegamedesign.SmallWorld
 			particle.transform.localScale = scale;
 			particle.SetActive(true);
 			particleResetTime = Time.time + particleResetDelay;
+			gameObject.SetActive(false);
 		}
 	}
 }

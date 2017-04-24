@@ -103,7 +103,9 @@ namespace Finegamedesign.SmallWorld
 			for (int index = 0; index < bots.Count; index++)
 			{
 				GameObject bot = bots[index];
-				bool isActive = null != bot && bot.GetComponent<CellBot>().player.activeSelf;
+				bool isActive = null != bot
+					&& null != bot.GetComponent<CellBot>().player
+					&& bot.GetComponent<CellBot>().player.activeSelf;
 				if (isActive)
 				{
 					botCount++;

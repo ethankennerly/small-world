@@ -36,7 +36,7 @@ namespace Finegamedesign.SmallWorld
 			for (index = 0; index < players.Count; index++)
 			{
 				aPlayer = players[index];
-				if (aPlayer.activeSelf)
+				if (aPlayer != null && aPlayer.activeSelf)
 				{
 					playerActiveCount++;
 				}
@@ -142,8 +142,17 @@ namespace Finegamedesign.SmallWorld
 			scaledObjects.Sort(
 				delegate(GameObject a, GameObject b)
 				{
-					return b.transform.localScale.x.CompareTo(
-						a.transform.localScale.x);
+					float aScale = 0.0f;
+					if (null != a)
+					{
+						aScale = a.transform.localScale.x;
+					}
+					float bScale = 0.0f;
+					if (null != b)
+					{
+						bScale = b.transform.localScale.x;
+					}
+					return bScale.CompareTo(aScale);
 				}
 			);
 		}

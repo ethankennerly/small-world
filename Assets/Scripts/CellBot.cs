@@ -56,7 +56,7 @@ namespace Finegamedesign.SmallWorld
 		void OnTriggerEnter2D(Collider2D other)
 		{
 			GameObject otherObject = other.gameObject;
-			if (otherObject.layer != player.layer || otherObject == player)
+			if (null == otherObject || otherObject.layer != player.layer || otherObject == player)
 			{
 				return;
 			}
@@ -69,7 +69,7 @@ namespace Finegamedesign.SmallWorld
 		void OnTriggerExit2D(Collider2D other)
 		{
 			GameObject otherObject = other.gameObject;
-			if (otherObject.layer != player.layer || otherObject == player)
+			if (null == otherObject || otherObject.layer != player.layer || otherObject == player)
 			{
 				return;
 			}
@@ -81,7 +81,7 @@ namespace Finegamedesign.SmallWorld
 
 		private void UpdateDirection()
 		{
-			if (!player.activeSelf)
+			if (null == player || !player.activeSelf)
 			{
 				return;
 			}
@@ -108,7 +108,7 @@ namespace Finegamedesign.SmallWorld
 			for (int index = 0; index < visibleCells.Count; index++)
 			{
 				GameObject interest = visibleCells[index];
-				if (!interest.activeSelf)
+				if (null == interest || !interest.activeSelf)
 				{
 					continue;
 				}

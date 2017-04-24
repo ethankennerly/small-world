@@ -120,8 +120,6 @@ namespace Finegamedesign.SmallWorld
 			{
 				return;
 			}
-			Debug.Log("OnCollisionEnter2D: other layer " + otherObject.layer
-				+ " my layer " + gameObject.layer);
 			if (gameObject.layer != otherObject.layer)
 			{
 				return;
@@ -147,6 +145,20 @@ namespace Finegamedesign.SmallWorld
 				return true;
 			}
 			return false;
+		}
+
+		void OnEnable()
+		{
+			photon.RPC("Enable", PhotonTargets.All);
+		}
+
+		[PunRPC]
+		public void Enable()
+		{
+			if (null != gameObject && !gameObject.activeSelf)
+			{
+				gameObject.SetActive(true);
+			}
 		}
 
 		[PunRPC]

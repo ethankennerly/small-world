@@ -33,6 +33,7 @@ TODO
 - [x] Scramble order of spawn points the same on all clients.
 - [x] Eat particles.
 - [x] Hear eat.
+- [ ] Broadcast spawn to all clients.
 - [ ] Observe Jennifer play.
 - [ ] Read name on cell.
 - [ ] Some smaller cells fleeing with fearful emoji facing their direction.

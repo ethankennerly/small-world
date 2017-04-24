@@ -1,3 +1,20 @@
+# Photon
+
+Photon Unity
+<https://doc.photonengine.com/en-us/pun/current/getting-started/pun-intro>
+
+Demos
+<https://doc.photonengine.com/en-us/pun/current/manuals-and-demos/demo-downloads-unity>
+
+RPC
+<https://www.youtube.com/watch?v=ozBmZ9FoN_o&list=UUFnFXCZuob4ffmc014e07zw>
+
+Enable/disable
+<http://answers.unity3d.com/questions/677213/photon-fps-disableenable-objects-over-network.html>
+
+Enable/disable
+<http://answers.unity3d.com/questions/1131798/using-rpcs-to-setactive-objects-with-pun-photon-ne.html>
+
 # Research
 
 - [ ] Multiplayer with Unity?
@@ -9,6 +26,7 @@
 	- [ ] Hello world tutorial <https://spatialos.improbable.io/docs/reference/10.2/getting-started/tour/build-your-world>
 	- [ ] Install Launcher.  Connect.
 	- [ ] Failed to load on second computer.
+
 
 # Unity Multiplayer
 
@@ -30,11 +48,6 @@
 
 Other multiplayer options.
 <https://www.slideshare.net/NoamGat/building-multiplayer-games-w-unity>
-
-Photon Unity
-<https://doc.photonengine.com/en-us/pun/current/getting-started/pun-intro>
-Demos
-<https://doc.photonengine.com/en-us/pun/current/manuals-and-demos/demo-downloads-unity>
 
 <https://docs.unity3d.com/Manual/UNetConverting.html>
 
